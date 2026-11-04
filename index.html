@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>우리 은하 3D 관찰</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="vendor/three.min.js"></script>
+<script defer src="vendor/OrbitControls.js"></script>
+<script defer src="galaxy-model.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+<div id="universe" aria-label="회전하고 확대할 수 있는 우리 은하 3차원 모형"></div>
+<div id="sun-label" hidden>태양계 <span>약 2만 6천 광년</span></div>
+<header>
+ <div class="glass title"><p class="eyebrow">MILKY WAY GALAXY</p><h1>우리 은하 3D 관찰</h1><p>중심의 막대에서 펼쳐지는 나선팔을 살펴보세요.</p></div>
+ <div class="glass facts"><div><small>은하의 형태</small><strong>막대나선은하</strong></div><div><small>태양계의 위치</small><strong>은하 원반 안</strong></div></div>
+</header>
+<div class="view-tag" id="view-tag" role="status">전체 모습</div>
+<section id="eye-controls" class="glass" hidden aria-label="태양 원점 관찰 방향">
+<strong>관측 원점: 태양 (0, 0, 0)</strong>
+<div><button id="look-center">은하 중심 방향</button><button id="look-out">반대 방향</button><button id="look-up">원반 위쪽</button></div>
+<label>좌우 회전 <input id="yaw" type="range" min="-180" max="180" value="0"><output id="yaw-value">0°</output></label>
+<label>상하 회전 <input id="pitch" type="range" min="-89" max="89" value="0"><output id="pitch-value">0°</output></label>
+<small>위치는 고정됩니다. 드래그로 시선만 돌리세요.</small></section>
+<div id="error" class="glass error" hidden role="alert">3D 화면을 시작하지 못했습니다. WebGL을 지원하는 브라우저에서 index.html을 열어 주세요.</div>
+<footer>
+ <div class="glass guide"><p><b>한 손가락 드래그</b> · 시점 회전</p><p><b>두 손가락 모으기·벌리기</b> · 축소·확대</p><p class="desktop">마우스 드래그와 휠도 사용할 수 있어요.</p></div>
+ <div class="glass toolbar" aria-label="관찰 도구">
+  <button data-view="overall" class="active" aria-pressed="true">전체 모습</button>
+  <button data-view="top" aria-pressed="false">위에서 보기</button>
+  <button data-view="side" aria-pressed="false">옆에서 보기</button>
+  <button data-view="sun" class="sun" aria-pressed="false">태양계 위치</button>
+  <button data-view="sun-eye" class="sun" aria-pressed="false">태양에서 바라보기</button>
+  <span class="divider"></span><button id="rotate" aria-pressed="false">자동 회전 시작</button>
+  <button id="zoom-in" aria-label="확대">＋</button><button id="zoom-out" aria-label="축소">−</button>
+ </div>
+</footer>
+<div class="caption"><p id="description">길쭉한 중심 막대와 그 양끝에서 이어지는 나선팔, 납작한 원반을 관찰해 보세요.</p><small>관측 자료를 바탕으로 단순화한 모형 · 별의 수·크기·색과 나선팔의 세부 배치는 실제와 다릅니다. 자동 회전은 시점 회전입니다.</small></div>
+</body></html>
